@@ -14,13 +14,13 @@ class ResponsePinjam {
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
-        data?.add(DataPinjam.fromJson(v));
+        data?.add(Data.fromJson(v));
       });
     }
   }
   int? status;
   String? message;
-  List<DataPinjam>? data;
+  List<Data>? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -45,8 +45,8 @@ class ResponsePinjam {
 /// user : {"id":2,"username":"said","nama":"said","telp":"085","alamat":"alamat","role":"PEMINJAM","created_at":"2024-01-09T05:36:44.000000Z","updated_at":"2024-01-09T05:36:44.000000Z"}
 /// book : {"id":1,"kategori_id":1,"judul":"Belajar mengenal angka","penulis":"kusnaidi","penerbit":"PT alangka","tahun_terbit":2024,"created_at":"2024-01-09T05:43:09.000000Z","updated_at":"2024-01-09T05:43:09.000000Z"}
 
-class DataPinjam {
-  DataPinjam({
+class Data {
+  Data({
       this.id, 
       this.userId, 
       this.bookId, 
@@ -58,7 +58,7 @@ class DataPinjam {
       this.user, 
       this.book,});
 
-  DataPinjam.fromJson(dynamic json) {
+  Data.fromJson(dynamic json) {
     id = json['id'];
     userId = json['user_id'];
     bookId = json['book_id'];
