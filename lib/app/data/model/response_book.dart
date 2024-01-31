@@ -4,9 +4,9 @@
 
 class ResponseBook {
   ResponseBook({
-    this.status,
-    this.message,
-    this.data,});
+      this.status, 
+      this.message, 
+      this.data,});
 
   ResponseBook.fromJson(dynamic json) {
     status = json['status'];
@@ -46,15 +46,15 @@ class ResponseBook {
 
 class DataBook {
   DataBook({
-    this.id,
-    this.kategoriId,
-    this.judul,
-    this.penulis,
-    this.penerbit,
-    this.tahunTerbit,
-    this.createdAt,
-    this.updatedAt,
-    this.kategori,});
+      this.id, 
+      this.kategoriId, 
+      this.judul, 
+      this.penulis, 
+      this.penerbit, 
+      this.tahunTerbit, 
+      this.createdAt, 
+      this.updatedAt, 
+      this.kategori,});
 
   DataBook.fromJson(dynamic json) {
     id = json['id'];
@@ -68,11 +68,11 @@ class DataBook {
     kategori = json['kategori'] != null ? Kategori.fromJson(json['kategori']) : null;
   }
   int? id;
-  int? kategoriId;
+  String? kategoriId;
   String? judul;
   String? penulis;
   String? penerbit;
-  int? tahunTerbit;
+  String? tahunTerbit;
   String? createdAt;
   String? updatedAt;
   Kategori? kategori;
@@ -100,8 +100,8 @@ class DataBook {
 
 class Kategori {
   Kategori({
-    this.id,
-    this.nama,});
+      this.id,
+      this.nama,});
 
   Kategori.fromJson(dynamic json) {
     id = json['id'];

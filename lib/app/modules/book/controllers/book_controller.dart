@@ -25,14 +25,13 @@ class BookController extends GetxController with StateMixin<List<DataBook>> {
   Future<void> getData() async{
     change(null, status: RxStatus.loading());
     try {
-      final response = await ApiProvider.instance().get(Endpoint.book,
-      );
+      final response = await ApiProvider.instance().get(Endpoint.book);
       if (response.statusCode == 200) {
         final ResponseBook responseBook = ResponseBook.fromJson(response.data);
         if (responseBook.data!.isEmpty){
           change(null, status: RxStatus.empty());
         } else {
-          change(responseBook.data! as List<DataBook>?, status: RxStatus.success());
+          change(responseBook.data, status: RxStatus.success());
         }
       } else {
         change(null, status: RxStatus.error("Gagal mengambil data"));
@@ -40,10 +39,10 @@ class BookController extends GetxController with StateMixin<List<DataBook>> {
     } on DioException catch (e) {
       if (e.response != null){
         if (e.response?.data != null){
-          change(null, status: RxStatus.error("${e.response?.data['message']}"));
+          change(null, status: RxStatus.error("dio ${e.response?.data['message']}"));
         }
       } else {
-        change(null, status: RxStatus.error(e.message ?? ""));
+        change(null, status: RxStatus.error("cek" + (e.message ?? "")));
       }
     } catch (e) {
       change(null, status: RxStatus.error(e.toString()));

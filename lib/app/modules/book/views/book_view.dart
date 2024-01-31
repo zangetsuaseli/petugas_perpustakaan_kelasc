@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:petugas_perpustakaan_kelasc/app/data/model/response_book.dart';
 import 'package:petugas_perpustakaan_kelasc/app/routes/app_pages.dart';
 
 import '../controllers/book_controller.dart';
@@ -20,9 +21,10 @@ class BookView extends GetView<BookController> {
         body: controller.obx((state) => ListView.separated(
           itemCount: state!.length,
           itemBuilder: (context, index){
+            DataBook dataBook = state[index];
             return ListTile(
-              title: Text("${state[index].judul}"),
-              subtitle: Text("Penulis: ${state[index].penulis}"),
+              title: Text("${dataBook?.judul}"),
+              subtitle: Text("Penulis: ${dataBook?.penulis}\n ${dataBook.penerbit} ${dataBook.tahunTerbit}"),
             );
           },
           separatorBuilder: (context, index){
